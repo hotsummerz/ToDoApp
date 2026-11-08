@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo Tugas Kuliah</title>
+  <meta name="description" content="Aplikasi web sederhana untuk mengelola daftar tugas kuliah.">
+  <meta property="og:title" content="Todo Tugas Kuliah">
+  <meta property="og:description" content="Aplikasi web sederhana untuk mengelola daftar tugas kuliah.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <span class="brand">Todo Tugas Kuliah</span>
+      <a class="nav-link" href="https://hotsummerz.my.id/">← Kembali ke Profil</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="section-block animate-fade-in page-intro">
+        <h1>Daftar Tugas Kuliah</h1>
+        <p class="page-subtitle">Catat, pantau, dan selesaikan tugas kuliahmu dalam satu tempat.</p>
+      </section>
+
+      <section class="section-block animate-fade-in" aria-labelledby="stats-title">
+        <h2 id="stats-title" class="sr-only">Ringkasan</h2>
+        <div class="stats-grid" id="stats"></div>
+      </section>
+
+      <section class="section-block animate-fade-in" aria-labelledby="form-title">
+        <header class="section-header"><h2 id="form-title">Tambah Tugas</h2></header>
+        <form class="bento-card task-form" id="task-form" novalidate>
+          <div class="form-grid">
+            <div class="field field-full">
+              <label for="task-title">Judul Tugas</label>
+              <input id="task-title" name="title" type="text" maxlength="120" required
+                     placeholder="Contoh: Laporan praktikum basis data" aria-describedby="task-title-error">
+              <p class="field-error" id="task-title-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label for="task-course">Mata Kuliah (opsional)</label>
+              <input id="task-course" name="course" type="text" maxlength="80"
+                     placeholder="Contoh: Manajemen Basis Data">
+            </div>
+
+            <div class="field">
+              <label for="task-deadline">Tenggat (opsional)</label>
+              <input id="task-deadline" name="deadline" type="date">
+            </div>
+
+            <div class="field field-full">
+              <label for="task-priority">Prioritas</label>
+              <select id="task-priority" name="priority">
+                <option value="low">Rendah</option>
+                <option value="medium" selected>Sedang</option>
+                <option value="high">Tinggi</option>
+              </select>
+            </div>
+
+            <div class="field field-full">
+              <label for="task-notes">Catatan (opsional)</label>
+              <textarea id="task-notes" name="notes" maxlength="500" placeholder="Tambahkan detail tugas…"></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Tambah Tugas</button>
+            <button type="button" class="btn-secondary" id="cancel-edit" hidden>Batal</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section-block animate-fade-in" aria-labelledby="list-title">
+        <header class="section-header"><h2 id="list-title">Daftar Tugas</h2></header>
+        <div class="toolbar">
+          <div class="filter-tabs" role="group" aria-label="Filter tugas">
+            <button type="button" class="filter-tab" data-filter="all" aria-pressed="true">Semua <span class="tab-count">0</span></button>
+            <button type="button" class="filter-tab" data-filter="pending" aria-pressed="false">Aktif <span class="tab-count">0</span></button>
+            <button type="button" class="filter-tab" data-filter="done" aria-pressed="false">Selesai <span class="tab-count">0</span></button>
+          </div>
+          <div class="sort-control">
+            <label for="sort-select" class="sr-only">Urutkan</label>
+            <select id="sort-select">
+              <option value="deadline">Tenggat terdekat</option>
+              <option value="newest">Terbaru ditambahkan</option>
+              <option value="priority">Prioritas tertinggi</option>
+            </select>
+          </div>
+        </div>
+        <ul class="task-list" id="task-list"></ul>
+        <div id="empty-state"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <address><strong>Todo Tugas Kuliah</strong><br>Tugas Mata Kuliah Pengembangan Aplikasi Web</address>
+    </div>
+  </footer>
+
+  <div class="toast-region" id="toast-region" role="status" aria-live="polite"></div>
+  <dialog class="confirm-dialog" id="confirm-dialog" aria-labelledby="confirm-title">
+    <form method="dialog">
+      <h3 id="confirm-title">Hapus tugas ini?</h3>
+      <p class="confirm-text" id="confirm-text"></p>
+      <div class="dialog-actions">
+        <button class="btn-secondary" value="cancel" autofocus>Batal</button>
+        <button class="btn-danger" value="confirm">Ya, Hapus</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,822 @@
+/* ============================== TOKENS ============================== */
+:root {
+  /* Brand blues (shared with profile site) */
+  --blue: #7BA6DE;
+  --blue-light: #F0F6FD;
+  --blue-subtle: #E2EDF9;
+  --blue-border: #BED8F6;
+  --blue-medium: #5187CE;
+  --blue-deep: #1A3E6D;
+  --blue-glow: rgba(123, 166, 222, 0.28);
+
+  --bg: #F8FAFD;
+  --bg-surface: #FFF;
+  --bg-subtle: #F1F6FC;
+  --border: #E2E8F0;
+
+  --text: #0F172A;
+  --text-secondary: #475569;
+  --text-inverse: #FFF;
+
+  --sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'Geist Mono', 'SF Mono', monospace;
+
+  --radius: 8px;
+  --transition: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Added for todo app */
+  --blue-deep-hover: #244C7E;
+
+  --success: #067647;
+  --success-light: #ECFDF3;
+  --success-border: #ABEFC6;
+
+  --warning: #B54708;
+  --warning-light: #FFFAEB;
+  --warning-border: #FEDF89;
+
+  --danger: #B42318;
+  --danger-light: #FEF3F2;
+  --danger-border: #FECDCA;
+  --danger-hover: #912018;
+
+  --overlay: rgba(15, 23, 42, 0.4);
+}
+
+/* ============================== RESET / BASE ============================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font: 16px/1.6 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(123, 166, 222, 0.06), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(123, 166, 222, 0.05), transparent 45%) fixed;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled, input:disabled, select:disabled, textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+textarea:focus-visible, [tabindex="0"]:focus-visible {
+  outline: 2px solid var(--blue-medium);
+  outline-offset: 3px;
+}
+
+dialog {
+  margin: auto;
+}
+
+h1, h2, h3 {
+  color: var(--text);
+  font-weight: 600;
+}
+
+main {
+  flex: 1;
+  padding: 40px 0 80px;
+}
+
+/* ============================== A11Y HELPERS ============================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 24px;
+  background: var(--blue-deep);
+  color: var(--text-inverse);
+  padding: 12px 20px;
+  border-radius: 4px;
+  font: 500 0.875rem var(--mono);
+  text-decoration: none;
+  z-index: 9999;
+  box-shadow: 0 4px 12px var(--blue-glow);
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: 20px;
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ============================== CONTAINER / HEADER ============================== */
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  font: 600 0.9375rem/1.2 var(--sans);
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font: 500 0.875rem var(--sans);
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: color var(--transition), background var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--blue-deep);
+  background: var(--blue-light);
+}
+
+/* ============================== MAIN / SECTIONS ============================== */
+.section-block {
+  margin-bottom: 40px;
+}
+
+.section-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.page-intro {
+  /* no section-header */
+}
+
+/* ============================== TYPOGRAPHY ============================== */
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.125rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+
+/* ============================== CARDS ============================== */
+.bento-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.bento-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 14px var(--blue-glow);
+}
+
+/* ============================== STATS ============================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 20px;
+}
+
+.stat-label, .stat-value {
+  display: block;
+}
+
+.stat-label {
+  font: 600 0.75rem/1.2 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--blue-deep);
+  margin-top: 4px;
+}
+
+/* ============================== FORM CONTROLS ============================== */
+.task-form {
+  /* extends .bento-card */
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.field {
+  /* base */
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  display: block;
+  font: 500 0.875rem/1.4 var(--sans);
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-height: 40px;
+  font-size: 0.9375rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: var(--blue-border);
+}
+
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  border-color: var(--blue-medium);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+textarea {
+  min-height: 88px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+input[type="date"], select {
+  color-scheme: light;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.field-error {
+  font: 500 0.8125rem/1.4 var(--sans);
+  color: var(--danger);
+  margin-top: 6px;
+}
+
+.field-hint {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* ============================== BUTTONS ============================== */
+.btn-primary, .btn-secondary, .btn-danger, .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  border-radius: 4px;
+  font: 500 0.875rem/1.2 var(--sans);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  border: 1px solid;
+}
+
+.btn-primary {
+  background: var(--blue-deep);
+  color: var(--text-inverse);
+  padding: 11px 20px;
+  border-color: var(--blue-deep);
+}
+
+.btn-primary:hover {
+  background: var(--blue-deep-hover);
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--blue-deep);
+  padding: 10px 18px;
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--blue-light);
+  border-color: var(--blue-border);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--text-inverse);
+  padding: 11px 20px;
+  border-color: var(--danger);
+}
+
+.btn-danger:hover {
+  background: var(--danger-hover);
+  transform: scale(0.98);
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+
+.btn-icon:hover {
+  background: var(--blue-light);
+  color: var(--blue-deep);
+  border-color: var(--blue-border);
+}
+
+.btn-icon.is-danger:hover {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-color: var(--danger-border);
+}
+
+/* ============================== TOOLBAR / TABS ============================== */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filter-tabs {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-secondary);
+  font: 500 0.875rem/1.2 var(--sans);
+  transition: color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.filter-tab:hover {
+  color: var(--blue-deep);
+}
+
+.filter-tab[aria-pressed="true"] {
+  background: var(--bg-surface);
+  color: var(--blue-deep);
+  border-color: var(--border);
+  box-shadow: 0 1px 3px var(--blue-glow);
+}
+
+.tab-count {
+  font: 500 0.75rem var(--mono);
+}
+
+.sort-control select {
+  min-width: 200px;
+}
+
+/* ============================== TASK LIST / CARD / CHECKBOX ============================== */
+.task-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.task-card {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: start;
+}
+
+.task-check {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border: 2px solid var(--blue-border);
+  border-radius: 4px;
+  background: var(--bg-surface) center / 14px no-repeat;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.task-check:hover {
+  border-color: var(--blue);
+}
+
+.task-check:checked {
+  background-color: var(--blue-deep);
+  border-color: var(--blue-deep);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E");
+}
+
+.task-body {
+  min-width: 0;
+}
+
+.task-title {
+  font: 600 0.9375rem/1.4 var(--sans);
+  overflow-wrap: anywhere;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 8px;
+}
+
+.task-deadline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.task-deadline.is-soon {
+  color: var(--warning);
+}
+
+.task-deadline.is-overdue {
+  color: var(--danger);
+  font-weight: 500;
+}
+
+.task-notes {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.task-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.task-card.is-done {
+  background: var(--bg-subtle);
+}
+
+.task-card.is-done .task-title {
+  color: var(--text-secondary);
+  text-decoration: line-through;
+  text-decoration-color: var(--blue-border);
+}
+
+.task-card.is-done .badge,
+.task-card.is-done .task-deadline {
+  opacity: 0.7;
+}
+
+/* ============================== BADGES ============================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font: 600 0.75rem var(--mono);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+
+.badge-blue {
+  background: var(--blue-light);
+  color: var(--blue-deep);
+  border-color: var(--blue-border);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge-neutral {
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.badge-warning {
+  background: var(--warning-light);
+  color: var(--warning);
+  border-color: var(--warning-border);
+}
+
+.badge-danger {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-color: var(--danger-border);
+}
+
+.badge-success {
+  background: var(--success-light);
+  color: var(--success);
+  border-color: var(--success-border);
+}
+
+/* ============================== EMPTY STATE ============================== */
+.empty-state {
+  background: var(--bg-surface);
+  border: 1px dashed var(--blue-border);
+  border-radius: var(--radius);
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+}
+
+/* ============================== DIALOG ============================== */
+.confirm-dialog {
+  width: calc(100% - 48px);
+  max-width: 400px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  background: var(--bg-surface);
+  color: var(--text);
+  box-shadow: 0 12px 32px rgba(123,166,222,0.25);
+}
+
+.confirm-dialog::backdrop {
+  background: var(--overlay);
+}
+
+.confirm-text {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 24px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* ============================== TOAST ============================== */
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: grid;
+  gap: 8px;
+  width: calc(100% - 48px);
+  max-width: 360px;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--blue-deep);
+  color: var(--text-inverse);
+  padding: 12px 20px;
+  border-radius: 4px;
+  font: 500 0.875rem/1.4 var(--sans);
+  box-shadow: 0 4px 12px var(--blue-glow);
+  text-align: center;
+  animation: fade 150ms ease;
+}
+
+/* ============================== FOOTER ============================== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-surface);
+  padding: 24px 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-content address {
+  font-style: normal;
+  line-height: 1.5;
+}
+
+/* ============================== ICONS ============================== */
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.icon-clock {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================== ANIMATION ============================== */
+.animate-fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1);
+}
+
+.animate-fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes task-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-card.is-new {
+  animation: task-in 300ms cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ============================== MEDIA QUERIES ============================== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.875rem;
+  }
+
+  h2 {
+    font-size: 1.375rem;
+  }
+
+  .bento-card {
+    padding: 24px;
+  }
+
+  .task-card {
+    padding: 16px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-tabs {
+    display: flex;
+  }
+
+  .filter-tab {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .sort-control select {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .task-card.is-new, .toast {
+    animation: none;
+  }
+}
