@@ -1,3 +1,4 @@
+// Storage module: handles localStorage read/write with validation
 import type { Task, StoredData, Result } from './types';
 
 const STORAGE_KEY = 'todo-tugas-kuliah:v1';
