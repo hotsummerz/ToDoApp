@@ -8,3 +8,7 @@ dist/
 .vscode/*
 !.vscode/extensions.json
 .idea/
+docs/screenshots/claude.md
+docs/screenshots/design.md
+docs/screenshots/next_steps.md
+docs/screenshots/readme.md
