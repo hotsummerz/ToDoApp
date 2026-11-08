@@ -1,4 +1,4 @@
-import './style.css';
+import '../style.css';
 import { config } from './config';
 import { init as initStore, subscribe, setFilter, setSortKey, toggleTask, deleteTask } from './store';
 import { initForm, enterEditMode } from './ui/form';
