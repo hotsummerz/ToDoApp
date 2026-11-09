@@ -473,7 +473,8 @@ select {
 }
 
 .tab-count {
-  font: 500 0.75rem var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .sort-control select {
@@ -499,9 +500,11 @@ select {
   appearance: none;
   width: 20px;
   height: 20px;
+  min-height: 20px;
+  flex-shrink: 0;
   margin-top: 2px;
   border: 2px solid var(--blue-border);
-  border-radius: 4px;
+  border-radius: 2px;
   background: var(--bg-surface) center / 14px no-repeat;
   cursor: pointer;
   transition: background-color var(--transition), border-color var(--transition);
