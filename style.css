@@ -192,9 +192,6 @@ main {
   padding-bottom: 12px;
 }
 
-.page-intro {
-  /* no section-header */
-}
 
 /* ============================== TYPOGRAPHY ============================== */
 h1 {
@@ -269,9 +266,6 @@ h3 {
 }
 
 /* ============================== FORM CONTROLS ============================== */
-.task-form {
-  /* extends .bento-card */
-}
 
 .form-grid {
   display: grid;
@@ -279,9 +273,6 @@ h3 {
   gap: 16px;
 }
 
-.field {
-  /* base */
-}
 
 .field-full {
   grid-column: 1 / -1;
