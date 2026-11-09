@@ -2,7 +2,7 @@
 
 Aplikasi web sederhana untuk mengelola daftar tugas kuliah, dibangun dengan TypeScript dan Vite sebagai tugas Mata Kuliah Pengembangan Aplikasi Web.
 
-**Live URL:** [https://hotsummerz.github.io/ToDoApp/](https://hotsummerz.github.io/ToDoApp/)
+**Live URL:** [https://todoapp.hotsummerz.my.id/](https://todoapp.hotsummerz.my.id/)
 
 ---
 
@@ -41,7 +41,7 @@ Aplikasi web sederhana untuk mengelola daftar tugas kuliah, dibangun dengan Type
 
 1. **Clone repository:**
    ```bash
-   git clone <URL_REPOSITORY>
+   git clone https://github.com/hotsummerz/ToDoApp.git
    cd "To Do (pertemuan 6)"
    ```
 
@@ -159,66 +159,6 @@ Project ini mendemonstrasikan semua konsep TypeScript yang diminta dalam tugas, 
 
 ---
 
-## Workflow Git & GitHub
-
-### Branches yang Digunakan
-
-_(Akan diupdate setelah development selesai)_
-
-- `main` - Branch utama (selalu deployable)
-- `feature/scaffold` - Setup awal project (struktur, types, storage)
-- `feature/task-crud` - Implementasi CRUD tasks (form, list, edit, delete)
-- `feature/ui-polish` - Styling, responsive design, animations
-- `docs/readme` - Dokumentasi README dan evidence
-
-### Pull Requests
-
-_(Akan diupdate dengan screenshot)_
-
-- PR #1: Merge `feature/scaffold` → `main`
-- PR #2: Merge `feature/task-crud` → `main` (dengan conflict resolution)
-- PR #3: Merge `docs/readme` → `main`
-
-### Merge Conflict Resolution
-
-Conflict dibuat secara sengaja pada file `src/config.ts` (konstanta `APP_TAGLINE` atau teks subtitle) dengan mengubah nilai yang sama dari dua branch berbeda. Conflict di-resolve dengan memilih salah satu versi atau menggabungkan keduanya, kemudian di-commit sebagai merge commit.
-
-**Langkah-langkah:**
-1. Buat 2 branch dari commit yang sama
-2. Ubah line yang sama di kedua branch dengan nilai berbeda
-3. Merge branch pertama ke `main`
-4. Merge branch kedua ke `main` → Git melaporkan conflict
-5. Edit file, hapus marker `<<<<<<<`, `=======`, `>>>>>>>`
-6. `git add`, `git commit` (merge commit), lalu push
-
-_(Screenshot conflict markers dan resolusi akan ditambahkan di folder `docs/screenshots/`)_
-
----
-
-## Screenshots
-
-### Aplikasi
-
-_(Screenshot UI aplikasi akan ditambahkan di sini)_
-
-- Homepage dengan daftar tugas
-- Form tambah/edit tugas
-- Filter dan sorting
-- Mobile responsive view
-
-### Evidence Git Workflow
-
-Semua screenshot evidence disimpan di folder [`docs/screenshots/`](./docs/screenshots/):
-
-- `branches.png` - Daftar branches yang dibuat
-- `commits.png` - History commits (`git log --graph --oneline --all`)
-- `pull-requests.png` - Daftar Pull Requests di GitHub
-- `conflict-markers.png` - Conflict markers sebelum resolve
-- `conflict-resolved.png` - File setelah conflict di-resolve
-- `merge-commit.png` - Merge commit di Git graph
-
----
-
 ## Struktur Project
 
 ```
@@ -231,10 +171,7 @@ Semua screenshot evidence disimpan di folder [`docs/screenshots/`](./docs/screen
 ├── .gitignore              # Files yang tidak di-track Git
 ├── .env                    # Environment variables (local, tidak di-commit)
 ├── .env.example            # Template environment variables (di-commit)
-├── CLAUDE.md               # Project requirements dan guidelines
-├── DESIGN.md               # Design system dan UI specifications
 ├── README.md               # Dokumentasi ini
-├── docs/screenshots/       # Evidence screenshots untuk submission
 └── src/
     ├── main.ts             # Entry point: wiring, event listeners
     ├── vite-env.d.ts       # TypeScript types untuk import.meta.env
