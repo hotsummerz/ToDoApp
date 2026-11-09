@@ -2,8 +2,6 @@
 
 Aplikasi web sederhana untuk mengelola daftar tugas kuliah, dibangun dengan TypeScript dan Vite sebagai tugas Mata Kuliah Pengembangan Aplikasi Web.
 
-**Live URL:** [https://todoapp.hotsummerz.my.id/](https://todoapp.hotsummerz.my.id/)
-
 ---
 
 ## Fitur
@@ -42,7 +40,7 @@ Aplikasi web sederhana untuk mengelola daftar tugas kuliah, dibangun dengan Type
 1. **Clone repository:**
    ```bash
    git clone https://github.com/hotsummerz/ToDoApp.git
-   cd "To Do (pertemuan 6)"
+   cd "To Do App"
    ```
 
 2. **Install dependencies:**
@@ -223,4 +221,4 @@ Project ini dibuat untuk keperluan tugas akademik Mata Kuliah Pengembangan Aplik
 
 ## Kontak
 
-Untuk pertanyaan atau feedback, silakan buka issue di repository ini atau hubungi melalui [website pribadi](https://hotsummerz.my.id/).
+Untuk pertanyaan atau feedback, silakan buka issue di repository ini atau hubungi melalui [website pribadi](https://hotsummerz.my.id).

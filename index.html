@@ -45,13 +45,13 @@
             </div>
 
             <div class="field">
-              <label for="task-course">Mata Kuliah</label>
+              <label for="task-course">Mata Kuliah (opsional)</label>
               <input id="task-course" name="course" type="text" maxlength="80"
                      placeholder="Contoh: Manajemen Basis Data">
             </div>
 
             <div class="field">
-              <label for="task-deadline">Tenggat</label>
+              <label for="task-deadline">Tenggat (opsional)</label>
               <input id="task-deadline" name="deadline" type="date">
             </div>
 
@@ -96,6 +96,42 @@
         </div>
         <ul class="task-list" id="task-list"></ul>
         <div id="empty-state"></div>
+      </section>
+
+      <section class="section-block animate-fade-in" aria-labelledby="catatan-title" id="catatan-teknis">
+        <header class="section-header"><h2 id="catatan-title">Catatan Teknis</h2></header>
+
+        <div style="display: grid; gap: 16px;">
+          <div class="bento-card">
+            <h3>Git & GitHub</h3>
+            <p>Git adalah version control system yang merekam perubahan kode dalam bentuk commits. Branch memungkinkan pengembangan fitur secara terisolasi. Merge menggabungkan perubahan dari satu branch ke branch lain. Conflict terjadi ketika dua branch mengubah baris yang sama; diselesaikan dengan memilih perubahan mana yang dipertahankan. GitHub adalah platform hosting untuk repository Git. Push mengunggah commits lokal ke remote, pull mengunduh dan merge perubahan dari remote. Pull Request adalah cara untuk mengusulkan dan mereview perubahan sebelum di-merge.</p>
+          </div>
+
+          <div class="bento-card">
+            <h3>npm</h3>
+            <p>npm (Node Package Manager) adalah package manager untuk JavaScript. <code>package.json</code> berisi metadata project, daftar dependencies, dan npm scripts. <code>package-lock.json</code> mengunci versi exact dari setiap dependency. <code>node_modules/</code> menyimpan package terinstall. Dependencies adalah package yang dibutuhkan saat runtime (di-bundle ke aplikasi), sedangkan devDependencies hanya dibutuhkan saat development dan build. Semantic versioning: <code>^1.2.3</code> boleh update minor dan patch, <code>~1.2.3</code> hanya patch.</p>
+          </div>
+
+          <div class="bento-card">
+            <h3>TypeScript</h3>
+            <p>TypeScript adalah typed superset dari JavaScript yang menambahkan sistem tipe statis. Tipe membantu menangkap error saat development sebelum kode dijalankan. TypeScript di-transpile menjadi JavaScript biasa yang browser dapat eksekusi. Strict mode memaksa pengecekan tipe yang lebih ketat, mencegah bug umum seperti null/undefined errors.</p>
+          </div>
+
+          <div class="bento-card">
+            <h3>Vite</h3>
+            <p>Vite adalah build tool yang menyediakan development server dengan Hot Module Replacement (HMR) sangat cepat menggunakan native ES modules. Development server start instant tanpa bundling. Production build menggunakan Rollup untuk bundling, tree-shaking (menghapus kode tidak terpakai), dan minification. Vite dapat transpile TypeScript ke JavaScript menggunakan esbuild, tetapi tidak melakukan type-checking; untuk itu perlu menjalankan <code>tsc</code> terpisah.</p>
+          </div>
+
+          <div class="bento-card">
+            <h3>Environment Variables</h3>
+            <p>Environment variables memisahkan konfigurasi dari kode, sehingga nilai bisa berbeda per environment tanpa mengubah source code. File <code>.env</code> menyimpan variables lokal dan tidak di-commit ke Git. <code>.env.example</code> adalah template yang di-commit. Di Vite, hanya variables dengan prefix <code>VITE_</code> yang di-expose ke client code, dan nilainya di-embed ke JavaScript bundle. Karena itu, <strong>JANGAN PERNAH</strong> menyimpan password atau API key di <code>VITE_*</code> variables.</p>
+          </div>
+
+          <div class="bento-card">
+            <h3>Compiler, Transpiler, dan Bundler</h3>
+            <p><strong>Compiler</strong> menerjemahkan source code ke bentuk lower-level (contoh: C ke machine code). <strong>Transpiler</strong> menerjemahkan source code ke bahasa lain pada level abstraksi sama (contoh: TypeScript ke JavaScript). TypeScript Compiler (<code>tsc</code>) adalah transpiler yang juga melakukan type-checking. <strong>Bundler</strong> menggabungkan banyak file module menjadi sedikit file yang dioptimasi untuk browser, dengan tree-shaking, code splitting, dan minification.</p>
+          </div>
+        </div>
       </section>
     </div>
   </main>
